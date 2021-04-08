@@ -1,4 +1,3 @@
-import pandas as pd
 import requests as req
 from getData import getData
 from processData import processData
