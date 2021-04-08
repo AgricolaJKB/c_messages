@@ -1,4 +1,5 @@
-import pandas as pd
+# Generate main messages: A country section contains a country header and n paragraphs with the published datasets.
+# This formula is repeated for each country for which data was published yesterday.
 
 def writeParagraph(title, subtitle, detail, link):
     combined_title = title + ' / ' + subtitle if subtitle else title
@@ -19,7 +20,7 @@ def writeParagraph(title, subtitle, detail, link):
 
     return paragraph
 
-def writeMainMessage(df_subset, region):
+def writeSection(df_subset, region):
     paragraphs = [writeParagraph(row.title, row.subtitle, row.min_level, row.url) for i, row in df_subset.iterrows()]
 
     message = {
@@ -42,6 +43,6 @@ def writeMainMessage(df_subset, region):
 
 
 def writeMainMessages(df, regions):
-    messages = [writeMainMessage(df[df.region == region], region) for region in regions]
+    messages = [writeSection(df[df.region == region], region) for region in regions]
 
     return messages

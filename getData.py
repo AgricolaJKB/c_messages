@@ -6,7 +6,7 @@ from env import env
 
 
 today = datetime.date.today()
-yesterday = today - datetime.timedelta(days=2)
+yesterday = today - datetime.timedelta(days=1)
 
 def getData(day=yesterday):
     # db config

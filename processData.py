@@ -1,7 +1,5 @@
-import pandas as pd
-
 def processData(df):
-    # exclude old datasets
+    # exclude records before 2000
     df = df[df['betreffsjahr'].str.startswith('20')]
 
     return df
