@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     # assemble webhook-url
     webhookUrl = f'https://hooks.slack.com/services/{env("S_WORKSPACE")}/{env("S_WEBHOOK_TOKEN")}'
-    print(webhookUrl)
+
     # post to slack channel
     for message in messages:
         req.post(webhookUrl, json=message)
