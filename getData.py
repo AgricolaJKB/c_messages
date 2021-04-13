@@ -9,7 +9,7 @@ today = datetime.date.today()
 yesterday = today - datetime.timedelta(days=1)
 
 def getData(day=yesterday):
-    # db config
+    # db config, connect to mariaDB-database
     hostname = 'localhost'
     username = env('DB_USERNAME')
     password = env('DB_PASSWORD')  # your password

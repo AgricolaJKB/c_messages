@@ -1,15 +1,13 @@
 import pandas as pd
-import json
-from startMessage import writeStartMessage
-from mainMessage import writeMainMessages
-from defaultMessage import writeDefaultMessage
+from messageGenerators.startMessage import writeStartMessage
+from messageGenerators.mainMessage import writeMainMessages
+from messageGenerators.defaultMessage import writeDefaultMessage
 
 
 def writeMessages(df):
     messages = []
 
-    # sort by region and extract todays regions
-    df = df.sort_values(by=['region', 'title'])
+    # extract todays regions
     df_regions = pd.unique(df.region)
 
     # assemble messages if df is not empty
