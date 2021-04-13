@@ -14,7 +14,7 @@ def writeParagraph(title, subtitle, detail, link):
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": f":page_with_curl:   *{ combined_title }*, aufgeschlüsselt bis auf *{ detail_dict[detail] }*. <{ link }|Hier abrufbar>"
+            "text": f"\n>:page_with_curl:   *{ combined_title }*, aufgeschlüsselt bis auf *{ detail_dict[detail] }*. <{ link }|Hier abrufbar>"
         }
     }
 
@@ -23,26 +23,20 @@ def writeParagraph(title, subtitle, detail, link):
 def writeSection(df_subset, region):
     paragraphs = [writeParagraph(row.title, row.subtitle, row.min_level, row.url) for i, row in df_subset.iterrows()]
 
-    message = {
-        "blocks": [
-            {
-                "type": "divider"
-            },
-            {
-                "type": "header",
-                "text": {
-                    "type": "plain_text",
-                    "text": ':round_pushpin:' + region,
-                    "emoji": True
-                }
-            }
-        ] + paragraphs
-    }
+    blocks = [{
+        "type": "header",
+        "text": {
+            "type": "plain_text",
+            "text": ':round_pushpin:' + region,
+            "emoji": True
+        }
+    }] + paragraphs
 
-    return message
+    return blocks
 
 
 def writeMainMessages(df, regions):
-    messages = [writeSection(df[df.region == region], region) for region in regions]
+    blocks = [writeSection(df[df.region == region], region) for region in regions]
+    # messages = [writeSection(df[df.region == region], region) for region in regions]
 
-    return messages
+    return blocks

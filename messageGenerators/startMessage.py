@@ -4,8 +4,7 @@ def writeStartMessage(regions, dataset_count):
     text = f":wave:   Moin! Gestern sind *{dataset_count} neue Datensätze* aus *{len(regions)} Bundesländern* erschienen. Sie stammen aus {', '.join(regions[:-1])} und {regions[-1]}."
 
 
-    message = {
-        "blocks": [
+    blocks = [
             {
                 "type": "section",
                 "text": {
@@ -14,9 +13,8 @@ def writeStartMessage(regions, dataset_count):
                 }
             }
         ]
-    }
 
-    return message
+    return blocks
 
 
 if __name__ == '__main__':

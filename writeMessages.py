@@ -14,10 +14,15 @@ def writeMessages(df):
     if df.empty:
         messages = [writeDefaultMessage()]
     else:
-        messages = [writeStartMessage(df_regions, len(df))] + writeMainMessages(df, df_regions)
+        # generate message items
+        raw_blocks = [writeStartMessage(df_regions, len(df))] + writeMainMessages(df, df_regions)
 
-    # convert python dict to json
-    # messages = [json.dumps(message) for message in messages]
+        # outputted as list of lists; reducing to one dimension
+        blocks = [i for row in raw_blocks for i in row]
+
+        messages = [{
+            "blocks": blocks
+        }]
 
     # return messages
     return messages
