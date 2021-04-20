@@ -5,8 +5,6 @@ from messageGenerators.defaultMessage import writeDefaultMessage
 
 
 def writeMessages(df):
-    messages = []
-
     # extract todays regions
     df_regions = pd.unique(df.region)
 
@@ -14,7 +12,7 @@ def writeMessages(df):
     if df.empty:
         messages = [writeDefaultMessage()]
     else:
-        # generate message items
+        # generate message blocks
         raw_blocks = [writeStartMessage(df_regions, len(df))] + writeMainMessages(df, df_regions)
 
         # outputted as list of lists; reducing to one dimension
