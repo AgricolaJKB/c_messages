@@ -6,7 +6,7 @@ from env import env
 
 
 today = datetime.date.today()
-yesterday = today - datetime.timedelta(days=1)
+yesterday = today - datetime.timedelta(days=env('TIMEDELTA'))
 
 def getData(day=yesterday):
     # db config, connect to mariaDB-database
