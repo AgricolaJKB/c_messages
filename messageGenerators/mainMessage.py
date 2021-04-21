@@ -13,7 +13,10 @@ def writeParagraph(title, subtitle, detail, link):
                    'Sonstiges': 'unbekannte Genauigkeit'}
 
     combined_title = title + ' / ' + subtitle if subtitle else title
-    detail_nicename = detail_dict[detail] if detail_dict[detail] else 'unbekannte Genauigkeit'
+    try:
+        detail_nicename = detail_dict[detail]
+    except KeyError:
+        detail_nicename = 'unbekannte Genauigkeit'
 
     paragraph = {
         "type": "section",
