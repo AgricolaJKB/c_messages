@@ -7,6 +7,7 @@ def writeParagraph(title, subtitle, detail, link):
                    'Kreisdaten': 'Kreisebene',
                    'Gemeindedaten': 'Gemeindeebene',
                    'Regierungsbezirke': 'Ebene der Regierungsbezirke',
+                   'Wahlkreise': 'Wahlkreisebene',
                    'Statistische Regionen': 'unbekannte Genauigkeit',
                    'Sonstiges': 'unbekannte Genauigkeit'}
 
