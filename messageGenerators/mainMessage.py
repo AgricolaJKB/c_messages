@@ -1,22 +1,25 @@
 # Generate main messages: A country section contains a country header and n paragraphs with the published datasets.
 # This formula is repeated for each country for which data was published yesterday.
 
+
 def writeParagraph(title, subtitle, detail, link):
-    combined_title = title + ' / ' + subtitle if subtitle else title
     detail_dict = {'Länderdaten': 'Länderebene',
                    'Kreisdaten': 'Kreisebene',
                    'Gemeindedaten': 'Gemeindeebene',
                    'Regierungsbezirke': 'Ebene der Regierungsbezirke',
+                   'Stadtbezirke': 'Ebene der Stadtbezirke',
                    'Wahlkreise': 'Wahlkreisebene',
                    'Statistische Regionen': 'unbekannte Genauigkeit',
                    'Sonstiges': 'unbekannte Genauigkeit'}
 
+    combined_title = title + ' / ' + subtitle if subtitle else title
+    detail_nicename = detail_dict[detail] if detail_dict[detail] else 'unbekannte Genauigkeit'
 
     paragraph = {
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": f"\n>:page_with_curl:   *{ combined_title }*, aufgeschlüsselt bis auf *{ detail_dict[detail] }*. <{ link }|Hier abrufbar>"
+            "text": f"\n>:page_with_curl:   *{ combined_title }*, aufgeschlüsselt bis auf *{ detail_nicename }*. <{ link }|Hier abrufbar>"
         }
     }
 
