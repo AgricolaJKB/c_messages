@@ -18,7 +18,8 @@ if __name__ == '__main__':
 
     # post to slack channel
     for message in messages:
-        req.post(webhookUrl, json=message)
+        resp = req.post(webhookUrl, json=message)
+        print(f'response {resp.status_code} [{resp.text}]')
 
 
 
