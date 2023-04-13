@@ -10,17 +10,18 @@ def writeMessages(df):
 
     # assemble messages if df is not empty
     if df.empty:
-        messages = [writeDefaultMessage()]
+        messages = writeDefaultMessage()
     else:
-        # generate message blocks
+	    # generate message blocks
         raw_blocks = [writeStartMessage(df_regions, len(df))] + writeMainMessages(df, df_regions)
 
         # outputted as list of lists; reducing to one dimension
         blocks = [i for row in raw_blocks for i in row]
 
-        messages = [{
+        messages = {
             "blocks": blocks
-        }]
+        }
 
     # return messages
     return messages
+

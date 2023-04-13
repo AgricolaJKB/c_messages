@@ -7,17 +7,13 @@ def writeDefaultMessage():
     message = {
         "blocks": [
             {
-                "type": "section",
+             	"type": "section",
                 "text": {
                     "type": "mrkdwn",
                     "text": text
                 }
             }
-        ]
+	    ]
     }
 
     return message
-
-
-if __name__ == '__main__':
-    writeDefaultMessage()
