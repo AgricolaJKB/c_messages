@@ -30,6 +30,6 @@ if __name__ == '__main__':
         })
         if (resp.status_code != 200):
             print(f'c_messages error: {resp.status_code} [{resp.text}]')
-            logger.error(f'c_messages error: {resp.status_code} [{resp.text}]')
+            logger.exception(f'c_messages error: {resp.status_code} [{resp.text}]')
     logger.info('Finished main.py')
 
