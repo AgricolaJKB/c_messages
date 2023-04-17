@@ -3,11 +3,11 @@ from loguru import logger
 from getData import getData
 from processData import processData
 from writeMessages import writeMessages
-from dotos.environ.get import load_dotos.environ.get
+from dotenv import load_dotenv
 
 logger.add('logs/main.log', format='{time} {level} {message}', level='INFO', rotation='1 week', compression='zip')
 
-load_dotos.environ.get()
+load_dotenv()
 
 if __name__ == '__main__':
     logger.info('Starting main.py')
