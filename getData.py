@@ -1,23 +1,22 @@
 import mariadb
 import sys
+import os
 import datetime
 import pandas as pd
-from env import env
-
 
 def getData(day=None):
     if day is None:
         today = datetime.date.today()
-        time_filter = today - datetime.timedelta(days=int(env('TIMEDELTA')))
+        time_filter = today - datetime.timedelta(days=int(os.environ.get('TIMEDELTA')))
     else:
         time_filter = day
-
+    
     # db config, connect to mariaDB-database
     hostname = 'localhost'
-    username = env('DB_USERNAME')
-    password = env('DB_PASSWORD')
-    database = env('DB_DATABASE')
-    port = int(env('DB_PORT'))
+    username = os.environ.get('DB_USERNAME')
+    password = os.environ.get('DB_PASSWORD')
+    database = os.environ.get('DB_DATABASE')
+    port = int(os.environ.get('DB_PORT'))
 
     # connect to db
     try:
