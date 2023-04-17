@@ -3,11 +3,11 @@ from loguru import logger
 from getData import getData
 from processData import processData
 from writeMessages import writeMessages
-from dotenv import load_dotenv
+from dotos.environ.get import load_dotos.environ.get
 
 logger.add('logs/main.log', format='{time} {level} {message}', level='INFO', rotation='1 week', compression='zip')
 
-load_dotenv()
+load_dotos.environ.get()
 
 if __name__ == '__main__':
     logger.info('Starting main.py')
@@ -20,7 +20,7 @@ if __name__ == '__main__':
     messages = writeMessages(df)
 
     # assemble webhook-url
-    webhookUrl = f'https://hooks.slack.com/services/{env("S_WORKSPACE")}/{env("S_WEBHOOK_TOKEN")}'
+    webhookUrl = f'https://hooks.slack.com/services/{os.environ.get("S_WORKSPACE")}/{os.environ.get("S_WEBHOOK_TOKEN")}'
 
     # post to slack channel
     # for i in range(0, len(messages["blocks"]), 10):
