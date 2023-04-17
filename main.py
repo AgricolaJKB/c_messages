@@ -1,3 +1,4 @@
+import os
 import requests as req
 from loguru import logger
 from getData import getData
