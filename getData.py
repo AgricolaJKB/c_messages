@@ -27,7 +27,7 @@ def getData(day=None):
 
     # get data
     df = pd.read_sql_query(
-        f"""SELECT * FROM {env('DB_TABLE')} WHERE eintragungsdatum = '{time_filter}' AND NOT region = 'Deutschland';""",
+        f"""SELECT * FROM {os.environ.get('DB_TABLE')} WHERE eintragungsdatum = '{time_filter}' AND NOT region = 'Deutschland';""",
         connection)
 
     # close db connection
